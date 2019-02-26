@@ -26,8 +26,6 @@
                encode += expdate; // add the expiration date to the cookie
 
                document.cookie = encode; // set the cookie
-
-               alert(document.cookie);
            }
            
            
@@ -36,10 +34,11 @@
            
            function read_it() {
                var readCookie = document.cookie,
+               div = document.getElementById("greeting"),
                 decode = decodeURIComponent(readCookie),
                 nameValue = decode.split("=");
 
-                document.write("Welcome " + nameValue[1]);
+                div.innerHTML = "Welcome " + nameValue[1];
            }
 
            if(document.cookie)
