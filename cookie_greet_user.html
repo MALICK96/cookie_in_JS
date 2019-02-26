@@ -1,0 +1,57 @@
+<!-- 
+    Program: Set a cookie in javascript and to remenber a user name when the user return to your site.
+    Author: Malick Diakite
+    Date: 2/26/2019
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome to My page</title>
+    </head>
+
+    <body>
+        <div id="greeting">
+
+        </div>
+        <script>
+           
+           // Set the cookie
+           function set_it() {
+               var userName = prompt("What is your Name?"),
+               cookie = "name=" + userName,
+               expdate = ";expires=Mon, 30 Dec 2022 12:00:00 UTC",
+               encode = encodeURIComponent(cookie); // encode the string inside the cookie
+
+               encode += expdate; // add the expiration date to the cookie
+
+               document.cookie = encode; // set the cookie
+
+               alert(document.cookie);
+           }
+           
+           
+
+           // Read the cookie
+           
+           function read_it() {
+               var readCookie = document.cookie,
+                decode = decodeURIComponent(readCookie),
+                nameValue = decode.split("=");
+
+                document.write("Welcome " + nameValue[1]);
+           }
+
+           if(document.cookie)
+                read_it();
+            else
+            {
+                set_it();
+                read_it();
+            }
+
+            
+        </script>
+    </body>
+</html>
+
