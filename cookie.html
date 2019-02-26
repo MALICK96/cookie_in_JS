@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome to My page</title>
+    </head>
+
+    <body>
+        <h2></h2>
+        <script>
+            /*
+                This program set a cookie and read it.
+                but it will ensure that that the cookie 
+                exist first before reading it or 
+                it will set it and read it.  
+            */
+           document.write("<h1>" + document.title + "<h1>");
+        
+            // set the cookie
+           function set_it() {
+                // get user favorite cookie
+                var favCookie = prompt("Enter your favorite cookie"),
+
+                // determine the duration of the cookie 
+                expdate = ";expires=Mon, 30 April 2022 12:00:00 UTC",
+
+                // set the string for the cookie 
+                cookie = "name=tasty1&fav=" + favCookie,
+
+                // replace the (" ", (,) or (;)) into their character codes
+                encodeCookie = encodeURIComponent(cookie);
+
+                // append the expiration date to the cookie 
+                encodeCookie += expdate;
+
+                // set the cookie
+                document.cookie = encodeCookie;
+
+           }
+
+           // read the cookie
+           function read_it() {
+               // get the cookie
+               var readCookie = document.cookie,
+
+               // decode the cookie 
+               decodeCookie = decodeURIComponent(readCookie),
+
+               // separte the string per name-value pairs
+               thePair = decodeCookie.split("&"),
+
+               // get first item and second item into name and fav variable
+               name = thePair[0],
+               fav = thePair[1];
+
+               // separate name-value pairs by name and value into different variable
+               name_propval = name.split("=");
+               fav_propval = fav.split("=");
+
+               // Alert the message to the viewer 
+               alert("The cookie's " + name_propval[0] + " is " + name_propval[1]);
+               alert("The cookie type is " + fav_propval[1]);
+
+           }
+
+
+           // Check if the cookie is set before reading it
+           if(document.cookie)
+           {
+                read_it();
+                
+           }
+           else
+           {
+                set_it();
+                read_it();
+           }
+            
+        </script>
+    </body>
+</html>
+
